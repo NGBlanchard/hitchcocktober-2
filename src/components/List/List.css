@@ -1,0 +1,15 @@
+.movie-list {
+  clear: left;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 15px;
+  margin-top: 15px;
+  text-align: center;
+  padding: 10px;
+}
+
+.list-header {
+  font-family: 'Amatic SC', cursive;
+  font-size: 50px;
+  text-align: center;
+}
