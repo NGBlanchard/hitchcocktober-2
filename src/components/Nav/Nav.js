@@ -1,14 +1,15 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom'
+import TokenService from '../../services/token-service.js'
 import './Nav.css'
 
 
 export default class Nav extends React.Component {
-  // handleLogoutClick = () => {
-  //   TokenService.clearAuthToken()
-  //   sessionStorage.clear();
-  //   window.location.href = '/login';
-  // }
+  handleLogoutClick = () => {
+    TokenService.clearAuthToken()
+    sessionStorage.clear();
+    window.location.href = '/login';
+  }
 
   renderLogoutLink() {
     return (
@@ -25,11 +26,6 @@ export default class Nav extends React.Component {
   renderLoginLink() {
     return (
       <div className='Nav__not-logged-in'>
-        <NavLink
-          to='/register'>
-          Register
-        </NavLink>
-        {' '}
         <Link
           to='/login'>
           Log in
@@ -46,19 +42,19 @@ export default class Nav extends React.Component {
         </Link>
         {' '}
         <Link to='/list'>
-          Movie List
+          Movies
         </Link>
         {' '}
         <Link to='/stats'>
-          User Stats
+          Stats
         </Link>
         {' '}
         <Link to='/about'>
           About
         </Link>  
-        {/* {TokenService.hasAuthToken()
+        {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
-          : this.renderLoginLink()} */}
+          : this.renderLoginLink()}
       </nav>
     )
   }
