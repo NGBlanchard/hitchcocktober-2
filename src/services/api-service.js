@@ -5,8 +5,21 @@ import config from '../config'
 
 const ApiService = {
 
-  getUsers() {
-    return fetch(`${config.API_ENDPOINT}/users`, {
+  getUserData(number) {
+    return fetch(`http://localhost:8000/users/${number}`, {
+        headers: {
+          'content-type': 'application/json',
+        },
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json()
+        )
+      },
+
+  getUsers(number) {
+    return fetch(`${config.API_ENDPOINT}/users/${number}`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .calendar-container {
   text-align: center;
   display: flex;
@@ -11,38 +15,43 @@
   text-align: center;
 }
 
-.day {
-  cursor: pointer;
-  font-size: 28px;
-  font-family: 'Special Elite', cursive;
+.calendar-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  grid-gap: 40px;
+  margin-top: 5px;
+  max-width: 450px;
 }
 
-.selected-day {
-  background-color:rgba(255, 140, 0, 0.899);
-  color: black;
-  border-radius: 20%;
-}
-
-.calendar {
-    width: 500px;
-    height: 500px;
-}
 
 .editor-year {
   width: 100px;
 }
 
+.week {
+  width: 500px;
+  display: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .week-day {
-  border-bottom: 1px solid lightgray;
   font-size: 20px;
+  margin: 15px;
+  max-width: 65px;
+  margin-bottom: 0px;
+}
+
+.hitchcocktober {
+  font-family: 'Nosifer', cursive;
 }
 
 
+
 @media (min-width: 750px) {
-  .calendar {
-    width: 700px;
-    height: 600px;
-  }
+  
 }
 
 /* desktop */

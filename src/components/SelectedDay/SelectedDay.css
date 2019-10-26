@@ -1,5 +1,22 @@
 .selected-day-container {
   margin-top: 35px;
+  margin-bottom: 400px;
   width: 100vw;
   text-align: center;
+}
+
+.date-banner {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.selected-movie-image {
+  box-shadow : 0px 1px 5px rgb(69, 69, 69);
+  cursor: pointer;
+}
+
+.dinner-and-movie {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }

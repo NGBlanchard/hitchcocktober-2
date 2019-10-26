@@ -5,11 +5,37 @@
   grid-gap: 15px;
   margin-top: 15px;
   text-align: center;
-  padding: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .list-header {
   font-family: 'Amatic SC', cursive;
-  font-size: 50px;
+  font-size: 70px;
   text-align: center;
+}
+
+@media (min-width: 590px) {
+  .movie-list {
+    grid-template-columns: repeat(3, 1fr);
+  } 
+} 
+
+@media (min-width: 750px) {
+  .movie-list {
+    grid-template-columns: repeat(4, 1fr);
+  }  
+}
+
+/* desktop */
+@media (min-width: 960px) {
+  .movie-list {
+    grid-template-columns: repeat(5, 1fr);
+  }  
+}
+
+@media (min-width: 1275px) {
+  .movie-list {
+    grid-template-columns: repeat(6, 1fr);
+  }  
 }
