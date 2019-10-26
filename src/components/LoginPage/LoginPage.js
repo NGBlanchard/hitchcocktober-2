@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
-
+import LoginNav from '../Nav/LoginNav'
 import './LoginPage.css'
 
 export default class LoginPage extends Component {
@@ -20,10 +20,12 @@ export default class LoginPage extends Component {
   render() {
     return (
       <>
+      <LoginNav />
       <section className='LoginPage'>
       <div className="success-alert">
         </div>
-        <h2>Login</h2>
+        <h2>Welcome to Hitchcocktober</h2>
+        <p>Please login below</p>
         <LoginForm
           onLoginSuccess={this.onLoginSuccess}
         />
