@@ -7,12 +7,10 @@ export default class MovieCard extends React.Component {
   
   static contextType = Context
 
-  // handleClick = (e) => {
-  //   e.preventDefault();
-  //   console.log(this.props.movie.id)
-  // }
+
 
   handleChange = event => {
+      event.preventDefault();
       console.log(event.target.value)
       console.log(this.props.movie.id)
 
