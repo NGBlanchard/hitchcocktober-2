@@ -48,9 +48,9 @@ onDayClick = (day) => {
             );
         }
         var totalCells = [...notOct, ...octDays];
-        return totalCells.map(day =>
+        return totalCells.map((day, index) =>
         <Day
-            key={day.day}
+            key={index}
             day={day}
             selectedDay={this.state.selectedDay}
             onDayClick={this.onDayClick}

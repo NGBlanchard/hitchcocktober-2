@@ -1,12 +1,10 @@
 import TokenService from '../services/token-service'
 import config from '../config'
 
-
-
 const ApiService = {
 
   getUserData(number) {
-    return fetch(`http://localhost:8000/users/${number}`, {
+    return fetch(`${config.API_ENDPOINT}/users/${number}`, {
         headers: {
           'content-type': 'application/json',
         },

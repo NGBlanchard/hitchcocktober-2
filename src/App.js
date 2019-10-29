@@ -11,6 +11,7 @@ import Stats from './components/Stats/Stats'
 import About from './components/About/About'
 import NotFoundPage from './components/NotFoundPage/NotFoundPage'
 import Context from './Context'
+import config from './config'
 
 
 class App extends React.Component {
@@ -21,9 +22,8 @@ class App extends React.Component {
   static contextType = Context
 
   componentDidMount() {
-    return fetch(`http://localhost:8000/movies`, {
+    return fetch(`${config.API_ENDPOINT}/movies`, {
       headers: {
-        'content-type': 'application/json',
       },
     })
       .then(res =>

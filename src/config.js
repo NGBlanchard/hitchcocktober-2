@@ -1,5 +1,5 @@
 export default {
-  API_ENDPOINT: 'https://localhost:8000',
+  API_ENDPOINT: 'http://localhost:9090',
   TOKEN_KEY: 'hitchcocktober-auth-token',
   CURRENT_USER: 'user',
   MEMBER_SINCE: "date",

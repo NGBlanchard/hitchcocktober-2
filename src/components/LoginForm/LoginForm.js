@@ -38,7 +38,7 @@ export default class LoginForm extends Component {
   render() {
     const { error } = this.state;
     return (
-      <>
+      <React.Fragment>
         <form className="LoginForm" onSubmit={this.handleAuth}>
           <span role="alert">{error && <p className="red">{error}</p>}</span>
           <section className="user_name">
@@ -55,7 +55,7 @@ export default class LoginForm extends Component {
           </section>
           <button type="submit">Login</button>
         </form>
-      </>
+      </React.Fragment>
     );
   }
 }

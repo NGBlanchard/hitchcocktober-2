@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { nonEmpty, matches, length, isTrimmed } from '../Utils/Utils'
-import Service from '../../services/api-service';
+import ApiService from '../../services/api-service';
 
 import './RegistrationForm.css'
 
@@ -17,7 +17,7 @@ export default class RegistrationForm extends Component {
     e.preventDefault();
     const { user_name, password, passwordConfirmation } = e.target;
     this.setState({ error: null });
-    Service.postUser({
+    ApiService.postUser({
       user_name: user_name.value,
       password: password.value
     })
