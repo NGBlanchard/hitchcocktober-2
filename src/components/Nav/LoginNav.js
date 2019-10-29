@@ -37,14 +37,14 @@ export default class LoginNav extends React.Component {
   render() {
     return (
       <nav className='Nav'>  
-      <Link to='/calendar'>
-          Hitchcocktober
+      <Link to='/register'>
+          Register
         </Link>
         
         {' '}
         <Link to='/about'>
           About
-        </Link>  
+        </Link> 
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}

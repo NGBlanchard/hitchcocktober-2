@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { nonEmpty, matches, length, isTrimmed } from '../Utils/Utils'
 import Service from '../../services/api-service';
 
+import './RegistrationForm.css'
+
 const passwordLength = length({min: 8, max: 60})
 const matchesPassword = matches('password')
 
