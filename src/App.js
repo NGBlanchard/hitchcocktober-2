@@ -1,5 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom'
+import PrivateRoute from "./components/Utils/PrivateRoute";
+import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
 import Calendar from './components/Calendar/Calendar'
 import Home from './components/Home/Home'
 import LoginPage from './components/LoginPage/LoginPage'
@@ -42,32 +44,34 @@ class App extends React.Component {
         <main className='App__main'>
           {this.state.hasError && <p className='red'>There was an error. Reconsider everything.</p>}
           <Switch>
-            <Route
+            <PublicOnlyRoute
               exact
               path={'/'}
               component={Home}
             />
-            <Route
+            <PublicOnlyRoute
+              restrictied={false}
               exact
               path={'/login'}
               component={LoginPage}
             />
-            <Route
+            <PublicOnlyRoute
+              restrictied={true}
               path={'/register'}
               component={RegistrationPage}
             />
-            <Route
+            <PrivateRoute 
               path={'/calendar'}
               component={Calendar}
             />
-            <Route
+            <PrivateRoute 
               path={'/list'}
               component={List}
             />
-            <Route 
+            <PrivateRoute  
               path={'/stats'} 
               component={Stats} />
-            <Route 
+            <PublicOnlyRoute 
               path={'/about'} 
               component={About} />
             <Route
