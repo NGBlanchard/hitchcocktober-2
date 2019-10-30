@@ -1,82 +1,66 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom'
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/Utils/PrivateRoute";
 import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
-import Calendar from './components/Calendar/Calendar'
-import Home from './components/Home/Home'
-import LoginPage from './components/LoginPage/LoginPage'
-import RegistrationPage from './components/RegistrationPage/RegistrationPage'
-import List from './components/List/List'
-import Stats from './components/Stats/Stats'
-import About from './components/About/About'
-import NotFoundPage from './components/NotFoundPage/NotFoundPage'
-import Context from './Context'
-import ApiService from './services/api-service';
-
+import Calendar from "./components/Calendar/Calendar";
+import Home from "./components/Home/Home";
+import LoginPage from "./components/LoginPage/LoginPage";
+import RegistrationPage from "./components/RegistrationPage/RegistrationPage";
+import List from "./components/List/List";
+import Stats from "./components/Stats/Stats";
+import About from "./components/About/About";
+import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
+import Context from "./Context";
+import ApiService from "./services/api-service";
 
 class App extends React.Component {
-  state = { 
+  state = {
     hasError: false,
-    userData: [],
-  }
-  static contextType = Context
+    userData: []
+  };
+  static contextType = Context;
 
   componentDidMount() {
-    ApiService.getMovies()
-      .then(res => this.context.setList(res))
-    ApiService.getUserData()
-      .then(res => this.setState({
-        userData: res
-      }))
+    ApiService.getMovies().then(res => this.context.setList(res));
+    ApiService.getUserData().then(res => this.context.setBigObj(res));
   }
 
   render() {
-  return (
-    <>
-      <div className='App'>
-        <main className='App__main'>
-          {this.state.hasError && <p className='red'>There was an error. Reconsider everything.</p>}
-          <Switch>
-            <PublicOnlyRoute
-              exact
-              path={'/'}
-              component={Home}
-            />
-            <PublicOnlyRoute
-              restrictied={false}
-              exact
-              path={'/login'}
-              component={LoginPage}
-            />
-            <PublicOnlyRoute
-              restrictied={true}
-              path={'/register'}
-              component={RegistrationPage}
-            />
-            <Route 
-              path={'/calendar'}
-              render={routeProps => {
-                return <Calendar 
-                {...routeProps} 
-                userData={this.state.userData} />;
-            }}
-            />
-            <PrivateRoute 
-              path={'/list'}
-              component={List}
-            />
-            <PrivateRoute  
-              path={'/stats'} 
-              component={Stats} />
-            <PublicOnlyRoute 
-              path={'/about'} 
-              component={About} />
-            <Route
-              component={NotFoundPage}
-            />
-          </Switch>
-        </main>
-      </div>
+    return (
+      <>
+        <div className="App">
+          <main className="App__main">
+            {this.state.hasError && (
+              <p className="red">There was an error. Reconsider everything.</p>
+            )}
+            <Switch>
+              <PrivateRoute exact path={"/home"} component={Home} />
+              <PublicOnlyRoute
+                restrictied={false}
+                exact
+                path={"/login"}
+                component={LoginPage}
+              />
+              <PublicOnlyRoute
+                restrictied={true}
+                path={"/register"}
+                component={RegistrationPage}
+              />
+              <Route
+                path={"/calendar"}
+                render={routeProps => {
+                  return (
+                    <Calendar {...routeProps} userData={this.state.userData} />
+                  );
+                }}
+              />
+              <PrivateRoute path={"/list"} component={List} />
+              <PrivateRoute path={"/stats"} component={Stats} />
+              <PublicOnlyRoute path={"/about"} component={About} />
+              <Route component={NotFoundPage} />
+            </Switch>
+          </main>
+        </div>
       </>
     );
   }

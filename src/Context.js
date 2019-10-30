@@ -10,7 +10,6 @@ const Context = React.createContext({
   clearError: () => {},
   setCurrentDay: () => {},
   setList: () => {},
-  setOctDays: () => {},
   setBigObj: () => {},
 })
 
@@ -25,10 +24,10 @@ export  class ContextProvider extends React.Component {
     error: null,  
   }
 
-  setBigObj = day => {
-    this.setState(prevState => ({
-      bigObj: [...prevState.bigObj, day]
-    }))
+  setBigObj = data => {
+    this.setState({
+      bigObj: data
+    })
   }
 
   setList = res => {
@@ -61,7 +60,6 @@ export  class ContextProvider extends React.Component {
       octDays: this.state.octDays,
       list: this.state.list,
       setList: this.setList,
-      setOctDays: this.setOctDays,
       bigObj: this.state.bigObj,
       setBigObj: this.setBigObj,
     }
