@@ -1,20 +1,20 @@
 import TokenService from '../services/token-service'
 import config from '../config'
 
-const ApiService = {
+const userId = TokenService.getUserId();
 
-  getUserData(number) {
-    return fetch(`${config.API_ENDPOINT}/users/${number}`, {
-        headers: {
-          'content-type': 'application/json',
-        },
-      })
-        .then(res =>
-          (!res.ok)
-            ? res.json().then(e => Promise.reject(e))
-            : res.json()
-        )
+const ApiService = {
+  getMovies() {
+    return fetch(`${config.API_ENDPOINT}/movies`, {
+      headers: {
       },
+    })
+      .then(res =>
+        (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+      )
+  },
 
   getUsers(number) {
     return fetch(`${config.API_ENDPOINT}/users/${number}`, {
@@ -29,18 +29,45 @@ const ApiService = {
       )
       },
 
-      getDay(day) {
-        return fetch(`${config.API_ENDPOINT}/days/${day}`, {
-          headers: {
-            'authorization': `bearer ${TokenService.getAuthToken()}`,
-          },
-        })
-          .then(res =>
-            (!res.ok)
-              ? res.json().then(e => Promise.reject(e))
-              : res.json()
-          )
-          },
+    getUserData() {
+      return fetch(`${config.API_ENDPOINT}/users/${userId}`, {
+        headers: {
+          'authorization': `bearer ${TokenService.getAuthToken()}`,
+        },
+      })
+        .then(res =>
+          (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json()
+        )
+    },
+
+      // getDays(userId) {
+      //   return fetch(`${config.API_ENDPOINT}/days`, {
+      //     headers: {
+      //       "content-type": "application/json",
+      //     }
+      //   })
+      //     .then(days =>
+      //       !days.ok ? days.json().then(e => Promise.reject(e)) : days.json()
+      //     )
+      //     .then(days => days.filter(function(day){
+      //       return day.user_id == userId
+      //     }))
+      // },
+
+      // getDay(day) {
+      //   return fetch(`${config.API_ENDPOINT}/days/${day}`, {
+      //     headers: {
+      //       'authorization': `bearer ${TokenService.getAuthToken()}`,
+      //     },
+      //   })
+      //     .then(res =>
+      //       (!res.ok)
+      //         ? res.json().then(e => Promise.reject(e))
+      //         : res.json()
+      //     )
+      //     },
  
       postLogin({ user_name, password }) {
         return fetch(`${config.API_ENDPOINT}/login`, {
@@ -64,8 +91,8 @@ const ApiService = {
           !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
         );
       },
-      postDay(content) {
-        return fetch(`${config.API_ENDPOINT}/days`, {
+      patchDay(content) {
+        return fetch(`${config.API_ENDPOINT}/users/${userId}`, {
           method: "POST",
           headers: {
             "content-type": "application/json"

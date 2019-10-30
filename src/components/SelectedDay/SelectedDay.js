@@ -5,21 +5,25 @@ import { NavLink } from "react-router-dom";
 import TokenService from '../../services/token-service'
 
 import './SelectedDay.css'
+import ApiService from '../../services/api-service';
 
 
 export default class SelectedDay extends React.Component {
   state = {
-    selectedDay: null
+    selectedDay: null,
   }
 
   static contextType = Context
 
  renderPoster(day) {
-  const userId = TokenService.getUserId();
-  //all this will exist in context userData
+  
   }
  
   render() {
+    const { id } = this.props.userData
+    console.log(id)
+    
+
     return (
       <>
       <h2 className="date-banner">

@@ -4,7 +4,7 @@ import Context from '../../Context'
 import SelectedDay from '../SelectedDay/SelectedDay'
 import Nav from '../Nav/Nav'
 import Day from '../Day/Day'
-import ApiService from '../../services/api-service';
+// import ApiService from '../../services/api-service';
 import TokenService from '../../services/token-service'
 import './Calendar.css';
 
@@ -12,7 +12,6 @@ import './Calendar.css';
 export default class Calendar extends React.Component {
   state = {
     selectedDay: moment().format("D"),
-    userData: [],
     user: null,
 }
 
@@ -20,17 +19,6 @@ static contextType = Context
 
 weekdays = moment.weekdays(); 
 weekdaysShort = moment.weekdaysShort();
-
-componentDidMount() {
-    const userId = TokenService.getUserId();
-    this.setState({
-      user: userId
-    });
-    ApiService.getUserData(userId)
-    .then(res => this.setState({
-        userData: res.days
-    }))
-}
 
 firstDayOfMonth = () => {
     let firstDay = moment().startOf('month').format('d');
@@ -43,18 +31,14 @@ onDayClick = (day) => {
     })
   }
 
-
-    renderDays() {
-        const { octDays = [] } = this.context
-        let notOct = [];
-        for (let i = 0; i < this.firstDayOfMonth(); i++) {
-            notOct.push(<div key={i * 63} className="notOct">
-                {""}
-                </div>
-            );
-        }
-        var totalCells = [...notOct, ...octDays];
-        return totalCells.map((day, index) =>
+renderDays() {
+    const { octDays = [] } = this.context
+    let notOct = [];
+    for (let i = 0; i < this.firstDayOfMonth(); i++) {
+        notOct.push(<div key={i * 63} className="notOct">{""}</div>);
+    }
+    var totalCells = [...notOct, ...octDays];
+    return totalCells.map((day, index) =>
         <Day
             key={index}
             day={day}
@@ -92,7 +76,7 @@ onDayClick = (day) => {
                     </section>
              </div>
              <div className="selected-day-container">
-                 <SelectedDay day={this.state.selectedDay} userData={this.state.userData}/>
+                 <SelectedDay day={this.state.selectedDay} userData={this.props.userData}/>
              </div>
           </>
         )

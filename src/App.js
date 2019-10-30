@@ -11,30 +11,23 @@ import Stats from './components/Stats/Stats'
 import About from './components/About/About'
 import NotFoundPage from './components/NotFoundPage/NotFoundPage'
 import Context from './Context'
-import config from './config'
+import ApiService from './services/api-service';
 
 
 class App extends React.Component {
   state = { 
-    list: [],
-    hasError: false }
-
+    hasError: false,
+    userData: [],
+  }
   static contextType = Context
 
   componentDidMount() {
-    return fetch(`${config.API_ENDPOINT}/movies`, {
-      headers: {
-      },
-    })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
+    ApiService.getMovies()
+      .then(res => this.context.setList(res))
+    ApiService.getUserData()
       .then(res => this.setState({
-        list: res
+        userData: res
       }))
-      .then(res => this.context.setList(this.state.list))
   }
 
   render() {
@@ -60,9 +53,13 @@ class App extends React.Component {
               path={'/register'}
               component={RegistrationPage}
             />
-            <PrivateRoute 
+            <Route 
               path={'/calendar'}
-              component={Calendar}
+              render={routeProps => {
+                return <Calendar 
+                {...routeProps} 
+                userData={this.state.userData} />;
+            }}
             />
             <PrivateRoute 
               path={'/list'}

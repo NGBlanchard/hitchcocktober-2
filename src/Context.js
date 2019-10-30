@@ -29,7 +29,6 @@ export  class ContextProvider extends React.Component {
     this.setState(prevState => ({
       bigObj: [...prevState.bigObj, day]
     }))
-    console.log(this.state.bigObj)
   }
 
   setList = res => {
