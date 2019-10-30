@@ -28,6 +28,19 @@ const ApiService = {
           : res.json()
       )
       },
+
+      getDay(day) {
+        return fetch(`${config.API_ENDPOINT}/days/${day}`, {
+          headers: {
+            'authorization': `bearer ${TokenService.getAuthToken()}`,
+          },
+        })
+          .then(res =>
+            (!res.ok)
+              ? res.json().then(e => Promise.reject(e))
+              : res.json()
+          )
+          },
  
       postLogin({ user_name, password }) {
         return fetch(`${config.API_ENDPOINT}/login`, {
@@ -50,7 +63,18 @@ const ApiService = {
         }).then(res =>
           !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
         );
-      }
+      },
+      postDay(content) {
+        return fetch(`${config.API_ENDPOINT}/days`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify(content)
+        }).then(res =>
+          !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
+        );
+      },
 }
 
 export default ApiService

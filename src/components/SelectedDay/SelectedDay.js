@@ -1,17 +1,24 @@
 import React from 'react';
 import Context from '../../Context'
 import { NavLink } from "react-router-dom";
+// import ApiService from '../../services/api-service';
+import TokenService from '../../services/token-service'
 
 import './SelectedDay.css'
 
 
 export default class SelectedDay extends React.Component {
-  
+  state = {
+    selectedDay: null
+  }
+
   static contextType = Context
 
  renderPoster(day) {
-   
- }
+  const userId = TokenService.getUserId();
+  //all this will exist in context userData
+  }
+ 
   render() {
     return (
       <>

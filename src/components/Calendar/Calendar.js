@@ -5,6 +5,7 @@ import SelectedDay from '../SelectedDay/SelectedDay'
 import Nav from '../Nav/Nav'
 import Day from '../Day/Day'
 import ApiService from '../../services/api-service';
+import TokenService from '../../services/token-service'
 import './Calendar.css';
 
 
@@ -12,6 +13,7 @@ export default class Calendar extends React.Component {
   state = {
     selectedDay: moment().format("D"),
     userData: [],
+    user: null,
 }
 
 static contextType = Context
@@ -20,7 +22,11 @@ weekdays = moment.weekdays();
 weekdaysShort = moment.weekdaysShort();
 
 componentDidMount() {
-    ApiService.getUserData(1)
+    const userId = TokenService.getUserId();
+    this.setState({
+      user: userId
+    });
+    ApiService.getUserData(userId)
     .then(res => this.setState({
         userData: res.days
     }))
@@ -54,6 +60,7 @@ onDayClick = (day) => {
             day={day}
             selectedDay={this.state.selectedDay}
             onDayClick={this.onDayClick}
+            userId={this.state.userId}
         />
         )}
 

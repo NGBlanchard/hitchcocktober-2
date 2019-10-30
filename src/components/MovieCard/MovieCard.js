@@ -1,21 +1,38 @@
 import React from 'react'
 import Context from '../../Context'
+import ApiService from '../../services/api-service';
 
 import './MovieCard.css'
 
 export default class MovieCard extends React.Component {
-  
+  state = {
+    dayNum: null,
+  }
   static contextType = Context
 
+  onChange = (e) => {
+    this.setState({
+      dayNum: e.target.value
+    })
+  }
 
-
-  handleChange = event => {
+  handleClick = event => {
       event.preventDefault();
-      console.log(event.target.value)
-      console.log(this.props.movie.id)
-
-    
-  };
+      const movie = this.context.list.filter(movie => {
+        return movie.id === this.props.movie.id
+      })
+      const dayNumber = parseInt(this.state.dayNum, 10);
+      const day = {
+        day: dayNumber,
+        movie_id: movie[0].id,
+        movie: movie[0].title,
+        rating: 0,
+        user_id: this.props.userId
+      }
+      ApiService.postDay(day)
+      this.context.setBigObj(day)
+      //set context with userData array with a bunch of days, no matter order
+    };
 
   render() {
     const days = this.context.octDays
@@ -27,12 +44,13 @@ export default class MovieCard extends React.Component {
         </span>
         <span className="back">
           <h3 className="title">{this.props.title}</h3>
-          <select className="select" onChange={this.handleChange}>
+          <select className="select" onChange={this.onChange}>
           <option value="">Add Movie to Date</option>
               {days.map((day, index) => (
                   <option value={day} key={index}>October {day}</option>
               ))}
           </select>
+          <button className="card-submit" onClick={this.handleClick}>Update</button>
           <p className="overview'">{this.props.movie.overview}</p>
           {/* <h4>Released: {this.props.movie.release_date}</h4> */}
         </span>

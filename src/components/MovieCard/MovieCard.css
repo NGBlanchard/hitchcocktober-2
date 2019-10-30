@@ -29,6 +29,17 @@
 	left: 0;
 }
 
+.card-submit {
+	width: 70px;
+	height: 20px;
+	font-size: 11px;
+	display: block;
+	text-align: center;
+	margin-left: 60px;
+	padding-bottom: 15px;
+	margin-bottom: 10px;
+}
+
 
 .front {
 	z-index: 2;
@@ -51,15 +62,6 @@
 	font-size: 25px;
 	font-weight: bolder;
 	margin-bottom: 10px;
-}
-
-.card-add-button {
-	height: 25px;
-	width: 25px;
-	border-radius: 100%;
-	color: rgb(69, 69, 69);
-	cursor: pointer;
-	background-color: lightgray;
 }
 
 .select {

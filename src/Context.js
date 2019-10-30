@@ -1,36 +1,35 @@
 import React from 'react'
 
-// const octDays = new Array(31)
-
 const Context = React.createContext({
-  userData: [],
   octDays: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" ],
   currentDay: null,
   error: null,
   list: [],
+  bigObj: [],
   setError: () => {},
   clearError: () => {},
   setCurrentDay: () => {},
   setList: () => {},
   setOctDays: () => {},
-  setUserData: () => {},
+  setBigObj: () => {},
 })
 
 export default Context
 
 export  class ContextProvider extends React.Component {
   state = {
-    userData: [],
     octDays: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" ],
     currentDay: '',  
     list: [],
+    bigObj: [],
     error: null,  
   }
 
-  setUserData = res => {
-    this.setState({ 
-      userData: res
-     })
+  setBigObj = day => {
+    this.setState(prevState => ({
+      bigObj: [...prevState.bigObj, day]
+    }))
+    console.log(this.state.bigObj)
   }
 
   setList = res => {
@@ -64,8 +63,8 @@ export  class ContextProvider extends React.Component {
       list: this.state.list,
       setList: this.setList,
       setOctDays: this.setOctDays,
-      setUserData: this.setUserData,
-      userData: this.state.userData,
+      bigObj: this.state.bigObj,
+      setBigObj: this.setBigObj,
     }
 
   return (
