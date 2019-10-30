@@ -2,10 +2,8 @@ import React from 'react';
 import Context from '../../Context'
 import { NavLink } from "react-router-dom";
 // import ApiService from '../../services/api-service';
-import TokenService from '../../services/token-service'
 
 import './SelectedDay.css'
-import ApiService from '../../services/api-service';
 
 
 export default class SelectedDay extends React.Component {
@@ -16,8 +14,14 @@ export default class SelectedDay extends React.Component {
   static contextType = Context
 
  renderPoster(day) {
-  
-  }
+   const seekDay = 'oct'+day
+   console.log(seekDay)
+  // const  {oct1, oct2, oct3, oct4, oct5, oct6, oct7, oct8, oct9,
+  // oct10, oct11, oct12, oct13, oct14, oct15, oct16, oct17, oct18,
+  // oct19, oct20, oct21, oct22, oct23, oct24, oct25, oct26, oct27, oct28,
+  // oct29, oct30, oct31 } = this.props.userData
+  console.log()  
+}
  
   render() {
     const { id } = this.props.userData

@@ -21,17 +21,16 @@ export default class MovieCard extends React.Component {
       const movie = this.context.list.filter(movie => {
         return movie.id === this.props.movie.id
       })
-      const dayNumber = parseInt(this.state.dayNum, 10);
+      // const dayNumber = parseInt(this.state.dayNum, 10);
       const day = {
-        day: dayNumber,
         movie_id: movie[0].id,
         movie: movie[0].title,
         rating: 0,
         user_id: this.props.userId
       }
-      ApiService.postDay(day)
-      this.context.setBigObj(day)
-      //set context with userData array with a bunch of days, no matter order
+      const finPatch = {}
+      finPatch[`oct${this.state.dayNum}`]=day
+      ApiService.patchDay(finPatch)
     };
 
   render() {

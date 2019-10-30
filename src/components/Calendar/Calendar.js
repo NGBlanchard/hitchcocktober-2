@@ -5,7 +5,6 @@ import SelectedDay from '../SelectedDay/SelectedDay'
 import Nav from '../Nav/Nav'
 import Day from '../Day/Day'
 // import ApiService from '../../services/api-service';
-import TokenService from '../../services/token-service'
 import './Calendar.css';
 
 
