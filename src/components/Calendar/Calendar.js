@@ -4,11 +4,12 @@ import Context from "../../Context";
 import SelectedDay from "../SelectedDay/SelectedDay";
 import Nav from "../Nav/Nav";
 import Day from "../Day/Day";
-// import ApiService from '../../services/api-service';
 import "./Calendar.css";
 
 export default class Calendar extends React.Component {
   state = {
+    showResults: false,
+    poster: "",
     selectedDay: moment().format("D"),
     user: null
   };
@@ -29,6 +30,19 @@ export default class Calendar extends React.Component {
     this.setState({
       selectedDay: day
     });
+    const foundDays = this.context.bigObj;
+    const seekDay = "oct" + day.toString();
+    const dayData = foundDays[seekDay];
+    const [film] = this.context.list.filter(
+      movie => movie.id === dayData.movie_id
+    );
+    film.poster_path ?
+    this.setState({
+      poster: film.poster_path
+    }) : this.setState({
+      poster: ""
+    });
+    this.setState({ showResults: true });
   };
 
   renderDays() {
@@ -85,10 +99,12 @@ export default class Calendar extends React.Component {
           </section>
         </div>
         <div className="selected-day-container">
-          <SelectedDay
-            day={this.state.selectedDay}
-            userData={this.props.userData}
-          />
+          {this.state.showResults ? (
+            <SelectedDay
+              poster={this.state.poster}
+              day={this.state.selectedDay}
+            />
+          ) : null}
         </div>
       </>
     );

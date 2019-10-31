@@ -25,6 +25,7 @@ export default class MovieCard extends React.Component {
       movie_id: movie[0].id,
       movie: movie[0].title,
       rating: 0,
+      poster_path: movie[0].poster_path,
       user_id: this.props.userId
     };
     const finPatch = {};

@@ -38,7 +38,7 @@ export default class Nav extends React.Component {
     return (
       <nav className='Nav'>  
       <Link to='/calendar'>
-          Hitchcocktober
+          Calendar
         </Link>
         {' '}
         <Link to='/list'>

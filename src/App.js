@@ -10,21 +10,25 @@ import List from "./components/List/List";
 import Stats from "./components/Stats/Stats";
 import About from "./components/About/About";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
+import CalendarError from "./components/ErrorBoundaries/CalendarError"
 import Context from "./Context";
 import ApiService from "./services/api-service";
 
 class App extends React.Component {
   state = {
-    hasError: false,
-    userData: []
+    userData: {},
+    hasError: false
   };
   static contextType = Context;
 
   componentDidMount() {
     ApiService.getMovies().then(res => this.context.setList(res));
-    ApiService.getUserData().then(res => this.context.setBigObj(res));
+    ApiService.getUserData().then(res => this.context.setBigObj(res))
+    ApiService.getUserData().then(res => this.setState({
+      userData: res
+  }))
   }
-
+  
   render() {
     return (
       <>
@@ -46,14 +50,12 @@ class App extends React.Component {
                 path={"/register"}
                 component={RegistrationPage}
               />
-              <Route
-                path={"/calendar"}
-                render={routeProps => {
-                  return (
-                    <Calendar {...routeProps} userData={this.state.userData} />
-                  );
-                }}
+
+              <Route 
+                path={"/calendar"} 
+                component={Calendar}
               />
+
               <PrivateRoute path={"/list"} component={List} />
               <PrivateRoute path={"/stats"} component={Stats} />
               <PublicOnlyRoute path={"/about"} component={About} />
