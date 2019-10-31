@@ -13,7 +13,8 @@ export default class MovieCard extends React.Component {
   onChange = e => {
     this.setState({
       dayNum: e.target.value
-    });
+    }, () => console.log('hi'));
+    
   };
 
   handleClick = event => {
@@ -31,6 +32,7 @@ export default class MovieCard extends React.Component {
     const finPatch = {};
     finPatch[`oct${this.state.dayNum}`] = day;
     ApiService.patchDay(finPatch);
+    this.context.updateBigObj(finPatch, day)
   };
 
   render() {

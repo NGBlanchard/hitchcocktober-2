@@ -7,11 +7,9 @@ import TokenService from '../../services/token-service'
 import './List.css'
 
 export default class List extends React.Component {
-  state = {
-    obj: [],
-    user: null,
-  }
   static contextType = Context
+
+  
 
   renderlist() {
     const stringId = TokenService.getUserId();
@@ -29,6 +27,7 @@ export default class List extends React.Component {
   }
 
   render() {
+    console.log(this.context.bigObj)
     return (
       <>
         <Nav />

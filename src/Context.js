@@ -1,64 +1,126 @@
-import React from 'react'
+import React from "react";
 
 const Context = React.createContext({
-  octDays: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" ],
+  octDays: [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "15",
+    "16",
+    "17",
+    "18",
+    "19",
+    "20",
+    "21",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "28",
+    "29",
+    "30",
+    "31"
+  ],
   currentDay: null,
   error: null,
   list: [],
   bigObj: [],
-  defaultDay: {},
   setError: () => {},
   clearError: () => {},
   setCurrentDay: () => {},
   setList: () => {},
   setBigObj: () => {},
-  setDefaultDay: () => {}
-})
+  updateBigObj: () => {}
+});
 
-export default Context
+export default Context;
 
-export  class ContextProvider extends React.Component {
+export class ContextProvider extends React.Component {
   state = {
-    defaultDay: {},
-    octDays: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" ],
-    currentDay: '',  
+    octDays: [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",
+      "17",
+      "18",
+      "19",
+      "20",
+      "21",
+      "22",
+      "23",
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31"
+    ],
+    currentDay: "",
     list: [],
     bigObj: [],
-    error: null,  
-  }
+    error: null
+  };
 
-  setDefaultData = data => {
-    this.setState({
-      defaultDay: data
-    })
-  }
+  updateBigObj = (patch, day) => {
+    const bigObj = { ...this.state.bigObj };
+    bigObj[day] = patch;
+    this.setState(() => (({ bigObj })));
+  };
 
   setBigObj = data => {
     this.setState({
       bigObj: data
-    })
-  }
+    });
+  };
 
   setList = res => {
-    this.setState({ 
+    this.setState({
       list: res
-     })
-  }
+    });
+  };
 
   setCurrentDay = day => {
-    this.setState({ 
+    this.setState({
       currentDay: day
-     })
-  }
+    });
+  };
 
   setError = error => {
-    console.error(error)
-    this.setState({ error })
-  }
+    console.error(error);
+    this.setState({ error });
+  };
 
   clearError = () => {
-    this.setState({ error: null })
-  }
+    this.setState({ error: null });
+  };
 
   render() {
     const value = {
@@ -71,14 +133,11 @@ export  class ContextProvider extends React.Component {
       setList: this.setList,
       bigObj: this.state.bigObj,
       setBigObj: this.setBigObj,
-      defaultDay: this.state.defaultDay,
-      setDefaultDay: this.setDefaultDay
-    }
+      updateBigObj: this.updateBigObj
+    };
 
-  return (
-    <Context.Provider value={value}>
-      {this.props.children}
-    </Context.Provider>
-  )
+    return (
+      <Context.Provider value={value}>{this.props.children}</Context.Provider>
+    );
   }
 }

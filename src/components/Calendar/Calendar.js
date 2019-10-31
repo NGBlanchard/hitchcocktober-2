@@ -36,7 +36,7 @@ export default class Calendar extends React.Component {
     const [film] = this.context.list.filter(
       movie => movie.id === dayData.movie_id
     );
-    film.poster_path ?
+    film !== undefined ?
     this.setState({
       poster: film.poster_path
     }) : this.setState({

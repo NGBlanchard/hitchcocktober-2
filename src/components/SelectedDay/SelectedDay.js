@@ -11,7 +11,7 @@ export default class SelectedDay extends React.Component {
   };
 
   static contextType = Context;
-  
+
   render() {
     return (
       <>
