@@ -22,11 +22,9 @@ class App extends React.Component {
 
   componentDidMount() {
     ApiService.getMovies().then(res => this.context.setList(res));
-    ApiService.getUserData().then(res => this.context.setBigObj(res))
+    ApiService.getUserData().then(res => this.context.setBigObj(res));
   }
 
-
-  
   render() {
     return (
       <>
@@ -49,10 +47,7 @@ class App extends React.Component {
                 component={RegistrationPage}
               />
 
-              <PrivateRoute 
-                path={"/calendar"} 
-                component={Calendar}
-              />
+              <PrivateRoute path={"/calendar"} component={Calendar} />
 
               <PrivateRoute path={"/list"} component={List} />
               <PrivateRoute path={"/stats"} component={Stats} />

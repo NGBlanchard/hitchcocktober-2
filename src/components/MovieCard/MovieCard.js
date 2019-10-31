@@ -1,11 +1,14 @@
 import React from "react";
 import Context from "../../Context";
 import ApiService from "../../services/api-service";
+import { Redirect } from 'react-router-dom'
+
 
 import "./MovieCard.css";
 
 export default class MovieCard extends React.Component {
   state = {
+    toCalendar: false,
     dayNum: null
   };
   static contextType = Context;
@@ -13,9 +16,10 @@ export default class MovieCard extends React.Component {
   onChange = e => {
     this.setState({
       dayNum: e.target.value
-    }, () => console.log('hi'));
-    
+    });
   };
+
+  
 
   handleClick = event => {
     event.preventDefault();
@@ -31,11 +35,31 @@ export default class MovieCard extends React.Component {
     };
     const finPatch = {};
     finPatch[`oct${this.state.dayNum}`] = day;
+    const movieDay = [`oct${this.state.dayNum}`] 
+    
+  //   var p = Promise.resolve(ApiService.patchDay(finPatch));
+    
+  //   const callContext = () => {
+  //     this.context.updateBigObj(finPatch, movieDay)
+  //  }
+
+  //   p.then(function(v) {
+  //     callContext(finPatch, movieDay)
+  //   })
+
     ApiService.patchDay(finPatch);
-    this.context.updateBigObj(finPatch, day)
+    this.context.updateBigObj(finPatch, movieDay, day);
+    
+
+    // this.setState(() => ({
+    //   toCalendar: true
+    // }))
   };
 
   render() {
+    if (this.state.toCalendar === true) {
+      return <Redirect to='/calendar' />
+    }
     const days = this.context.octDays;
     return (
       <section className="card-container">

@@ -37,7 +37,7 @@ const Context = React.createContext({
   currentDay: null,
   error: null,
   list: [],
-  bigObj: [],
+  bigObj: {},
   setError: () => {},
   clearError: () => {},
   setCurrentDay: () => {},
@@ -85,14 +85,14 @@ export class ContextProvider extends React.Component {
     ],
     currentDay: "",
     list: [],
-    bigObj: [],
+    bigObj: {},
     error: null
   };
 
-  updateBigObj = (patch, day) => {
-    const bigObj = { ...this.state.bigObj };
-    bigObj[day] = patch;
-    this.setState(() => (({ bigObj })));
+  updateBigObj = (patch, movieDay, day) => {
+    const bigObj = Object.assign({}, this.state.bigObj)
+    bigObj[movieDay] = day;
+    this.setState({ bigObj }, () => console.log(bigObj.oct1.movie))
   };
 
   setBigObj = data => {

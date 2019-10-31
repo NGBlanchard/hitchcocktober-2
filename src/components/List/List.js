@@ -27,7 +27,7 @@ export default class List extends React.Component {
   }
 
   render() {
-    console.log(this.context.bigObj)
+    // console.log(this.context.bigObj)
     return (
       <>
         <Nav />
