@@ -3,15 +3,13 @@ import { Route, Switch } from "react-router-dom";
 import PrivateRoute from "./components/Utils/PrivateRoute";
 import PublicOnlyRoute from "./components/Utils/PublicOnlyRoute";
 import Calendar from "./components/Calendar/Calendar";
-import Home from "./components/Home/Home";
 import LoginPage from "./components/LoginPage/LoginPage";
 import RegistrationPage from "./components/RegistrationPage/RegistrationPage";
 import List from "./components/List/List";
-import Stats from "./components/Stats/Stats";
-import About from "./components/About/About";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import Context from "./Context";
 import ApiService from "./services/api-service";
+import TokenService from './services/token-service.js'
 
 class App extends React.Component {
   state = {
@@ -21,9 +19,15 @@ class App extends React.Component {
   static contextType = Context;
 
   componentDidMount() {
-    ApiService.getMovies().then(res => this.context.setList(res));
-    ApiService.getUserData().then(res => this.context.setBigObj(res));
+    if (TokenService.hasAuthToken()) {
+    ApiService.getMovies().then(res => this.context.setList(res))
+    ApiService.getUserData().then(res => this.context.setBigObj(res))
+    } else this.setState({
+      hasError: false
+    })
   }
+
+  
 
   render() {
     return (
@@ -34,25 +38,29 @@ class App extends React.Component {
               <p className="red">There was an error. Reconsider everything.</p>
             )}
             <Switch>
-              <PrivateRoute exact path={"/home"} component={Home} />
               <PublicOnlyRoute
                 restrictied={false}
                 exact
                 path={"/login"}
                 component={LoginPage}
               />
-              <PublicOnlyRoute
+              <Route
                 restrictied={true}
-                path={"/register"}
+                exact
+                path={"/"}
                 component={RegistrationPage}
               />
-
-              <PrivateRoute path={"/calendar"} component={Calendar} />
-
-              <PrivateRoute path={"/list"} component={List} />
-              <PrivateRoute path={"/stats"} component={Stats} />
-              <PublicOnlyRoute path={"/about"} component={About} />
-              <Route component={NotFoundPage} />
+              <PrivateRoute 
+                exact
+                path={"/calendar"} 
+                component={Calendar} />
+              <PrivateRoute
+                exact
+                path={"/list"} 
+                component={List} 
+              />
+              <Route 
+                component={NotFoundPage} />
             </Switch>
           </main>
         </div>

@@ -49,6 +49,12 @@
   font-family: 'Nosifer', cursive;
 }
 
+.calendar-head {
+  height: 30px;
+  width: 400px;
+  color: rgb(69, 69, 69);
+}
+
 
 
 @media (min-width: 750px) {

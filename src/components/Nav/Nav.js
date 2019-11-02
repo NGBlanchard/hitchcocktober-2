@@ -44,14 +44,7 @@ export default class Nav extends React.Component {
         <Link to='/list'>
           Movies
         </Link>
-        {' '}
-        <Link to='/stats'>
-          Stats
-        </Link>
-        {' '}
-        <Link to='/about'>
-          About
-        </Link>  
+        {' '} 
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}

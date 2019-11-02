@@ -4,10 +4,12 @@ import Context from "../../Context";
 import SelectedDay from "../SelectedDay/SelectedDay";
 import Nav from "../Nav/Nav";
 import Day from "../Day/Day";
+import ApiService from "../../services/api-service";
 import "./Calendar.css";
-
+import hitchcocktober from '../../images/hitchcocktober-head-gray.png'
 export default class Calendar extends React.Component {
   state = {
+    dayData: {},
     showResults: false,
     poster: "",
     selectedDay: moment().format("D"),
@@ -18,6 +20,7 @@ export default class Calendar extends React.Component {
 
   weekdays = moment.weekdays();
   weekdaysShort = moment.weekdaysShort();
+
 
   firstDayOfMonth = () => {
     let firstDay = moment()
@@ -36,6 +39,9 @@ export default class Calendar extends React.Component {
     const [film] = this.context.list.filter(
       movie => movie.id === dayData.movie_id
     );
+    this.setState({
+      dayData: film
+    })
     film !== undefined ?
     this.setState({
       poster: film.poster_path
@@ -83,7 +89,13 @@ export default class Calendar extends React.Component {
         <div className="calendar-container">
           <div className="calendar-header">
             <h1 className="hitchcocktober">
-              Hitchcocktober 2019
+             <div>
+               <img 
+                src={hitchcocktober} 
+                alt="hitchcocktober" 
+                className="calendar-head" 
+              />
+             </div> 
               {/* <this.YearNav /> */}
             </h1>
           </div>
@@ -103,6 +115,7 @@ export default class Calendar extends React.Component {
             <SelectedDay
               poster={this.state.poster}
               day={this.state.selectedDay}
+              dayData={this.state.dayData}
             />
           ) : null}
         </div>

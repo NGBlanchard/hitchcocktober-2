@@ -90,21 +90,21 @@ export class ContextProvider extends React.Component {
   };
 
   updateBigObj = (patch, movieDay, day) => {
-    const bigObj = Object.assign({}, this.state.bigObj)
+    const bigObj = Object.assign({}, this.state.bigObj);
     bigObj[movieDay] = day;
-    this.setState({ bigObj }, () => console.log(bigObj.oct1.movie))
+    this.setState({ bigObj }, () => null);
   };
 
   setBigObj = data => {
     this.setState({
       bigObj: data
-    });
+    }, () => null);
   };
 
   setList = res => {
     this.setState({
       list: res
-    });
+    }, () => null);
   };
 
   setCurrentDay = day => {

@@ -1,28 +1,42 @@
 import React from "react";
 import Context from "../../Context";
 import ApiService from "../../services/api-service";
-import { Redirect } from 'react-router-dom'
-
+import { Redirect } from "react-router-dom";
 
 import "./MovieCard.css";
 
 export default class MovieCard extends React.Component {
   state = {
+    update: "Update",
+    bgColor: "beige",
     toCalendar: false,
-    dayNum: null
+    dayNum: "null",
+    day: false,
+    error: "none"
   };
   static contextType = Context;
 
   onChange = e => {
     this.setState({
-      dayNum: e.target.value
+      dayNum: e.target.value,
+      
     });
   };
 
-  
+  validateDay = event => {
+    if (this.state.dayNum === "null") {
+      this.setState({
+        error: "block",
+        update: "Update",
+        bgColor: "beige",
+      })
+    } else {
+      this.handleClick(event)
+    }
+  }
 
   handleClick = event => {
-    event.preventDefault();
+    event.preventDefault(); 
     const movie = this.context.list.filter(movie => {
       return movie.id === this.props.movie.id;
     });
@@ -35,30 +49,19 @@ export default class MovieCard extends React.Component {
     };
     const finPatch = {};
     finPatch[`oct${this.state.dayNum}`] = day;
-    const movieDay = [`oct${this.state.dayNum}`] 
-    
-  //   var p = Promise.resolve(ApiService.patchDay(finPatch));
-    
-  //   const callContext = () => {
-  //     this.context.updateBigObj(finPatch, movieDay)
-  //  }
-
-  //   p.then(function(v) {
-  //     callContext(finPatch, movieDay)
-  //   })
-
+    const movieDay = [`oct${this.state.dayNum}`];
     ApiService.patchDay(finPatch);
     this.context.updateBigObj(finPatch, movieDay, day);
-    
-
-    // this.setState(() => ({
-    //   toCalendar: true
-    // }))
+    this.setState({
+      update: "Added!",
+      bgColor: "#32CD32",
+      error: "none"
+    });
   };
 
   render() {
     if (this.state.toCalendar === true) {
-      return <Redirect to='/calendar' />
+      return <Redirect to="/calendar" />;
     }
     const days = this.context.octDays;
     return (
@@ -77,18 +80,24 @@ export default class MovieCard extends React.Component {
           <span className="back">
             <h3 className="title">{this.props.title}</h3>
             <select className="select" onChange={this.onChange}>
-              <option value="">Add Movie to Date</option>
+              <option value="null">Add Movie to Date</option>
               {days.map((day, index) => (
                 <option value={day} key={index}>
                   October {day}
                 </option>
               ))}
             </select>
-            <button className="card-submit" onClick={this.handleClick}>
-              Update
+            <p className="Required" style={{ display: this.state.error}}>
+              Please select a day to add this movie to
+            </p>
+            <button
+              className="card-submit"
+              onClick={this.validateDay}
+              style={{ backgroundColor: this.state.bgColor }}
+            >
+              <p className="update">{this.state.update}</p>
             </button>
             <p className="overview'">{this.props.movie.overview}</p>
-            {/* <h4>Released: {this.props.movie.release_date}</h4> */}
           </span>
         </div>
       </section>

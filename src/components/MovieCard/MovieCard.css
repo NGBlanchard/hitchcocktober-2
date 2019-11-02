@@ -69,3 +69,7 @@
 	background-color: lightgray;
 	margin-bottom: 10px;
 }
+
+.card-submit{
+	transition: background-color .5s linear;
+}

@@ -13,10 +13,14 @@ export default class SelectedDay extends React.Component {
   static contextType = Context;
 
   render() {
+    console.log(this.props.dayData);
     return (
       <>
         <h2 className="date-banner">October {this.props.day}</h2>
         <section className="dinner-and-movie">
+            <h4 className="movie-details">
+              Tonight, you're watching {this.props.dayData.title}
+            </h4>
           <section className="tonight-movie-card">
             <NavLink to={`/list`} className="add-move">
               <img
@@ -29,17 +33,12 @@ export default class SelectedDay extends React.Component {
                 alt="movie poster"
               />
             </NavLink>
-            {/* <h4 className="movie-details">
-              Tonight, you are watching {this.props.dayData.movie}
-            </h4> */}
-            {/* <h4 className="movie-details">Want to watch a movie?</h4> */}
+            {this.props.dayData.overview ? (
+              <p>{this.props.dayData.overview}</p>
+            ) : (
+              <p></p>
+            )}
           </section>
-
-          {/* <img
-            className="add-meal"
-            src="https://dummyimage.com/200x300/000000/fff.png&text=Add+Meal"
-            alt="add meal"
-          /> */}
         </section>
       </>
     );
