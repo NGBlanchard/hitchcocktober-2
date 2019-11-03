@@ -35,6 +35,9 @@ export default class Calendar extends React.Component {
     const foundDays = this.context.bigObj;
     const seekDay = "oct" + day.toString();
     const dayData = foundDays[seekDay];
+    if (!dayData) {this.setState({
+      poster: ""})
+    if (!dayData) {return}}
     const [film] = this.context.list.filter(
       movie => movie.id === dayData.movie_id
     );
