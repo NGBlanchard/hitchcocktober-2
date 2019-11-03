@@ -33,8 +33,9 @@ const ApiService = {
   },
 
   postLogin({ user_name, password }) {
+    console.log(config.API_ENDPOINT)
     return fetch(`${config.API_ENDPOINT}/login`, 
-    console.log(config.API_ENDPOINT){
+    {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -43,6 +44,7 @@ const ApiService = {
     }).then(res =>
       !res.ok ? res.json().then(e => Promise.reject(e)) : res.json()
     );
+    
   },
 
   postUser(user) {
