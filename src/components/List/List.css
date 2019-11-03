@@ -18,7 +18,18 @@
 }
 
 img {
-  width:165px;
+  width: 165px;
+}
+
+@media (min-width: 400px) {
+  img {
+    width: 200px;
+  }
+  .movie-list {
+    padding-left: 25px;
+    padding-right: 25px;
+    grid-gap: 15px
+  }
 }
 
 @media (min-width: 590px) {
