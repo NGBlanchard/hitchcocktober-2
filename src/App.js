@@ -9,7 +9,7 @@ import List from "./components/List/List";
 import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import Context from "./Context";
 import ApiService from "./services/api-service";
-import TokenService from './services/token-service.js'
+import TokenService from "./services/token-service.js";
 
 class App extends React.Component {
   state = {
@@ -20,14 +20,13 @@ class App extends React.Component {
 
   componentDidMount() {
     if (TokenService.hasAuthToken()) {
-    ApiService.getMovies().then(res => this.context.setList(res))
-    ApiService.getUserData().then(res => this.context.setBigObj(res))
-    } else this.setState({
-      hasError: false
-    })
+      ApiService.getMovies().then(res => this.context.setList(res));
+      ApiService.getUserData().then(res => this.context.setBigObj(res));
+    } else
+      this.setState({
+        hasError: false
+      });
   }
-
-  
 
   render() {
     return (
@@ -50,17 +49,9 @@ class App extends React.Component {
                 path={"/"}
                 component={RegistrationPage}
               />
-              <PrivateRoute 
-                exact
-                path={"/calendar"} 
-                component={Calendar} />
-              <PrivateRoute
-                exact
-                path={"/list"} 
-                component={List} 
-              />
-              <Route 
-                component={NotFoundPage} />
+              <PrivateRoute exact path={"/calendar"} component={Calendar} />
+              <PrivateRoute exact path={"/list"} component={List} />
+              <Route component={NotFoundPage} />
             </Switch>
           </main>
         </div>

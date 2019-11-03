@@ -8,7 +8,7 @@
 .date-banner {
   margin-top: 0px;
   margin-bottom: 0px;
-  color: rgb(69, 69, 69);
+  color: black;
 }
 
 .selected-movie-image {
@@ -26,8 +26,33 @@
 .movie-details {
   margin-top: 10px;
   color: rgb(69, 69, 69);
-  font-size: 20px;
-  max-width: 200px;
+  font-size: 25px;
+  max-width: 350px;
   font-family: 'Open Sans Condensed', sans-serif;
   margin-right: 0px;
+  margin-bottom: 10px;
+}
+
+.overview {
+  width: 250px;
+  color: rgb(69, 69, 69);
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 21px;
+  text-align: justify;
+  padding: 10px;
+  padding-right: 15px;
+}
+
+.tonight-movie-card {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items:flex-start;
+  align-content:flex-start; 
+}
+
+.stats {
+  text-align: left;
+  padding-left: 10px;
+  font-size: 17px;
 }

@@ -13,6 +13,9 @@ const TokenService = {
   setUserId(userId) {
     window.sessionStorage.setItem(config.USER_ID, userId);
   },
+  setUserData(data) {
+    window.localStorage.setItem(config.USER_DATA, data)
+  },
   getUser() {
     return window.sessionStorage.getItem(config.CURRENT_USER);
   },

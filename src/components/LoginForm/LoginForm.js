@@ -7,8 +7,7 @@ import './LoginForm.css'
 
 export default class LoginForm extends Component {
   static defaultProps = {
-    onLoginSuccess: () => {
-    }
+    onLoginSuccess: (id) => {}
   };
 
   state = { error: null };
@@ -29,7 +28,7 @@ export default class LoginForm extends Component {
         TokenService.setUser(res.user.user_name);
         TokenService.setDate(res.user.date_created);
         TokenService.setUserId(res.user.id);
-        this.props.onLoginSuccess();
+        this.props.onLoginSuccess(res.user.id);
       })
       .catch(res => {
         this.setState({ error: res.error });
