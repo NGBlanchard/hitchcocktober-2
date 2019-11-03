@@ -26,7 +26,9 @@ export default class RegistrationPage extends Component {
           </h1>
           <p>Every October, use this app to celebrate the films of Alfred Hitchcock.
             Browse a list of the movies he directed, and schedule them across your
-            own personalized month.
+            own personalized month. <br/>
+            Demo Username: Demonstration <br/>
+            Demo Password: DemoPassword1
           </p>
           <h2>Register Below</h2>
           <RegistrationForm
