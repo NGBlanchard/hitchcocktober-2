@@ -5,11 +5,12 @@
   background-color: bisque;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 999;
 }
 
 a {
-  margin-left: 20px;
+  margin-right: 10px;
+  margin-left: 10px;
   color: rgb(69,69,69)
 }

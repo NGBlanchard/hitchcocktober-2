@@ -1,0 +1,8 @@
+.App__main {
+  height: 100vh;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 0 auto;
+  height: calc(100vh - 70px);
+  margin-top: 10px;
+}

@@ -2,14 +2,9 @@
   box-sizing: border-box;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Raleway", sans-serif;
-  font-size: 17px;
-}
-
 .LoginPage {
+  padding-left: 40px;
+  padding-right: 40px;
   margin-left: 20px;
   margin-right: 20px;
   display: flex;
@@ -25,8 +20,6 @@ h2 {
   margin-bottom: 20px;
 }
 
-
-
 .red {
   color: #ca1551;
 }
@@ -34,7 +27,6 @@ h2 {
 .success-alert {
   display: none;
 }
-
 
 .Input,
 .Textarea {
@@ -68,5 +60,5 @@ input:focus {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 50px;
+  width: 350px;
 }
-

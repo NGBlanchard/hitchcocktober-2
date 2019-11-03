@@ -1,10 +1,9 @@
 .RegistrationForm {
-  width: 500px;
-  max-width: 750px;
+  width: 400px;
   margin-left:100px;
   margin-right: 100px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
 }
 
 .success {

@@ -24,7 +24,6 @@ input {
   text-align: left;
   width: 100%;
   border-radius: 4px;
-  width: 450px;
 }
 
 input:focus {
@@ -41,10 +40,10 @@ input::placeholder,
 }
 
 .LoginForm {
-  width: 500px;
+  width: 400px;
   max-width: 750px;
   margin-left:100px;
   margin-right: 100px;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
 }

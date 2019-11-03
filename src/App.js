@@ -10,6 +10,7 @@ import NotFoundPage from "./components/NotFoundPage/NotFoundPage";
 import Context from "./Context";
 import ApiService from "./services/api-service";
 import TokenService from "./services/token-service.js";
+import './App.css'
 
 class App extends React.Component {
   state = {
