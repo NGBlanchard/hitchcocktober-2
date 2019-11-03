@@ -2,8 +2,14 @@
   padding: 15px;
   display: flex;
   flex-direction: row-reverse;
+  background-color: bisque;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 a {
   margin-left: 20px;
+  color: rgb(69,69,69)
 }

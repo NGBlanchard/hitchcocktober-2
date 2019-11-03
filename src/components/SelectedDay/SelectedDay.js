@@ -3,7 +3,6 @@ import Context from "../../Context";
 import { NavLink } from "react-router-dom";
 
 import "./SelectedDay.css";
-// import { getDay } from "date-fns/esm";
 
 export default class SelectedDay extends React.Component {
   state = {
@@ -19,7 +18,7 @@ export default class SelectedDay extends React.Component {
         <section className="dinner-and-movie">
           <h4 className="movie-details">
             {this.props.poster
-              ? `Tonight, you're watching ${this.props.dayData.title}`
+              ? `Here's what you've planned for this day: ${this.props.dayData.title}`
               : ``}
           </h4>
           <section className="tonight-movie-card">

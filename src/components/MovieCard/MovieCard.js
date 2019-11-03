@@ -7,7 +7,7 @@ import "./MovieCard.css";
 
 export default class MovieCard extends React.Component {
   state = {
-    update: "Update",
+    update: "Add",
     bgColor: "beige",
     toCalendar: false,
     dayNum: "null",

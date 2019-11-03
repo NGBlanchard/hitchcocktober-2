@@ -71,5 +71,15 @@
 }
 
 .card-submit{
+	font-family: "Righteous", cursive;
 	transition: background-color .5s linear;
+	font-size: 17px;
+	color: rgb(69, 69, 69);
+	display: flex;
+	justify-content: center;
+}
+
+.update{
+	position: relative;
+	bottom: 7px;
 }

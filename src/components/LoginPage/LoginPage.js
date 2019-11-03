@@ -5,6 +5,7 @@ import Context from "../../Context";
 import "./LoginPage.css";
 import config from "../../config";
 import TokenService from "../../services/token-service";
+import welcome from "../../images/welcome.png";
 
 export default class LoginPage extends Component {
   static defaultProps = {
@@ -55,7 +56,9 @@ export default class LoginPage extends Component {
         <LoginNav />
         <section className="LoginPage">
           <div className="success-alert"></div>
-          <h2>Welcome to Hitchcocktober</h2>
+          <h1 className="welcome-header">
+            <img src={welcome} alt="welcome" className="welcome-header" />
+          </h1>
           <p>Please login below</p>
           <LoginForm onLoginSuccess={this.onLoginSuccess} />
         </section>

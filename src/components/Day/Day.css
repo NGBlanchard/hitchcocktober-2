@@ -8,7 +8,8 @@
   align-items:center;
   cursor: pointer;
   font-size: 25px;
-  font-family: 'Special Elite', cursive;
+  font-family: "Righteous", cursive;
+  background-color: rgba(240, 240, 240, 0.795);
 }
 
 .current-day {
@@ -19,7 +20,7 @@
   align-items:center;
   cursor: pointer;
   font-size: 25px;
-  font-family: 'Special Elite', cursive;
+  font-family: "Righteous", cursive;
 }
 
 

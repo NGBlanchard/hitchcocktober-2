@@ -39,7 +39,7 @@ export default class RegistrationForm extends Component {
     return (
       <>
         {this.state.success ? (
-          <p className="success">Registration Successful!</p>
+          <p className="success">Registration Successful! Click on the Login link above to get started.</p>
         ) : (
           <p className="directions">
             Heads up: your password must contain 1 upper case, lower case,

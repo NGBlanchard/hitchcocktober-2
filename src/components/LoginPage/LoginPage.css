@@ -17,6 +17,7 @@ body {
   align-content: center;
   align-items: center;
   justify-content: center;
+  color: rgb(69, 69, 69);
 }
 
 h2 {
@@ -45,6 +46,7 @@ h2 {
   text-align: left;
   width: 100%;
   border-radius: 4px;
+  color: rgb(69, 69, 69);
 }
 textarea:focus,
 input:focus {
@@ -58,5 +60,13 @@ input:focus {
 
 .Textarea {
   resize: vertical;
+}
+
+.welcome-header {
+  height: 120px;
+  color: rgb(69, 69, 69);
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 

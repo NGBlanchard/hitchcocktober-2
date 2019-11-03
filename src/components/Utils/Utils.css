@@ -1,13 +1,10 @@
 .Required {
-  color: #CA1551;
+  color: rgb(252, 39, 110);
   font-family: Arial;
   font-weight: bold;
   margin: 15px;
   padding: 3px 3px 5px 3px;
   background-blend-mode: screen;
-  animation-name: color;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
   text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
 }
 

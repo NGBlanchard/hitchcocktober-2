@@ -6,6 +6,32 @@
   align-content: center;
   align-items: center;
   justify-content: center;
+  color: rgb(69, 69, 69);
 }
 
+.directions {
+  margin-bottom: 20px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bolder;
+  font-size: 20px;
+}
+
+.welcome-header {
+  height: 120px;
+  color: rgb(69, 69, 69);
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: 'Open Sans Condensed', sans-serif;
+  margin-top: 30px;
+}
+
+p {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bolder;
+  font-size: 20px;
+}
 

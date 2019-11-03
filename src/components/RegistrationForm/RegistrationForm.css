@@ -6,3 +6,12 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+
+.success {
+  color: rgb(252, 39, 110);
+  font-family: Arial;
+  font-weight: bold;
+  margin: 15px;
+  padding: 3px 3px 5px 3px;
+  background-blend-mode: screen;
+}
