@@ -64,3 +64,11 @@
   color: rgb(69, 69, 69);
   font-family: 'Open Sans Condensed', sans-serif;
 }
+
+.not-added {
+  font-size: 20px;
+  color: rgb(69, 69, 69);
+  padding-left: 40px;
+  padding-right: 40px;
+  margin-bottom: 50px;
+}

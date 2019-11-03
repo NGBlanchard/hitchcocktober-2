@@ -22,17 +22,18 @@ export default class SelectedDay extends React.Component {
               : ``}
           </h4>
           <section className="tonight-movie-card">
+          {this.props.poster
+                    ?
             <NavLink to={`/list`} className="add-move">
               <img
                 className="selected-movie-image"
                 src={
-                  this.props.poster
-                    ? `https://image.tmdb.org/t/p/w200${this.props.poster}`
-                    : "https://dummyimage.com/200x300/000/fff.png&text=Add+Movie"
-                }
+                   `https://image.tmdb.org/t/p/w200${this.props.poster}`}
                 alt="movie poster"
               />
             </NavLink>
+            :
+            <span className="not-added">You have not yet added a movie to this day</span>}
             {this.props.poster ? (
               <span>
                 <p className="overview">{this.props.dayData.overview}</p>

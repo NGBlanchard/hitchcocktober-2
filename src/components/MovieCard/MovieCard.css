@@ -12,8 +12,8 @@
 }
 
 .card-container, .front, .back {
-	width: 200px;
-	height: 300px;
+	width: 165px;
+	height: 247.5px;
 }
 
 .flipper {
@@ -32,10 +32,10 @@
 .card-submit {
 	width: 70px;
 	height: 20px;
-	font-size: 11px;
+	font-size: 10px;
 	display: block;
 	text-align: center;
-	margin-left: 60px;
+	margin-left: 45px;
 	padding-bottom: 15px;
 	margin-bottom: 10px;
 }
@@ -54,7 +54,7 @@
 	overflow: auto;
 	padding: 5px;
 	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 19px;
+	font-size: 17px;
 	color: lightgray;
 }
 
@@ -73,7 +73,7 @@
 .card-submit{
 	font-family: "Righteous", cursive;
 	transition: background-color .5s linear;
-	font-size: 17px;
+	font-size: 15px;
 	color: rgb(69, 69, 69);
 	display: flex;
 	justify-content: center;
@@ -81,5 +81,5 @@
 
 .update{
 	position: relative;
-	bottom: 7px;
+	bottom: 10px;
 }

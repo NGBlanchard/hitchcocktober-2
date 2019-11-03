@@ -1,20 +1,24 @@
 .movie-list {
   clear: left;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 15px;
+  grid-template-columns: repeat(2, 2fr);
+  grid-gap: 10px;
   margin-top: 75px;
   text-align: center;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .list-header {
   height: 35px;
   color: rgb(69, 69, 69);
   text-align: center;
-  margin-top: 50px;
+  margin-top: 35px;
   margin-bottom: 20px;
+}
+
+img {
+  width:165px;
 }
 
 @media (min-width: 590px) {
