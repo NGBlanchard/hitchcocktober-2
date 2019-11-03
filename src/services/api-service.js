@@ -33,7 +33,8 @@ const ApiService = {
   },
 
   postLogin({ user_name, password }) {
-    return fetch(`${config.API_ENDPOINT}/login`, {
+    return fetch(`${config.API_ENDPOINT}/login`, 
+    console.log(config.API_ENDPOINT){
       method: "POST",
       headers: {
         "content-type": "application/json"
