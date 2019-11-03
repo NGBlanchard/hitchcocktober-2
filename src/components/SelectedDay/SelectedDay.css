@@ -72,3 +72,22 @@
   padding-right: 40px;
   margin-bottom: 50px;
 }
+
+@media (min-width: 750px) {
+  .not-added {
+    margin-bottom: 0px;
+  }
+
+  .dinner-and-movie {
+    width: 400px;
+  }
+
+  .date-banner {
+    width: 400px;
+  }
+
+  .selected-day-container {
+    margin: 0px;
+    width: 400px;
+  }
+}

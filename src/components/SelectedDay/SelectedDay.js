@@ -33,7 +33,7 @@ export default class SelectedDay extends React.Component {
               />
             </NavLink>
             :
-            <span className="not-added">You have not yet added a movie to this day</span>}
+            <NavLink to={`/list`} className="not-added">Click here to browse Alfred Hitchcock's movies.</NavLink>}
             {this.props.poster ? (
               <span>
                 <p className="overview">{this.props.dayData.overview}</p>

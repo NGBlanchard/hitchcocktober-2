@@ -89,6 +89,7 @@ export default class Calendar extends React.Component {
     return (
       <>
         <Nav />
+        <div className="page-container">
         <div className="calendar-container">
           <div className="calendar-header">
             <h1 className="hitchcocktober">
@@ -121,6 +122,7 @@ export default class Calendar extends React.Component {
               dayData={this.state.dayData}
             />
           ) : null}
+        </div>
         </div>
       </>
     );
