@@ -28,7 +28,7 @@ export default class RegistrationPage extends Component {
             Browse a list of the movies he directed, and schedule them across your
             own personalized month. <br/>
             Demo Username: Demonstration <br/>
-            Demo Password: DemoPassword1
+            Demo Password: DemoPassword1!
           </p>
           <h2>Register Below</h2>
           <RegistrationForm
