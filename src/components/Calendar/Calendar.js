@@ -100,7 +100,6 @@ export default class Calendar extends React.Component {
                   className="calendar-head"
                 />
               </div>
-              {/* <this.YearNav /> */}
             </h1>
           </div>
           <div className="week">{weekdays}</div>
