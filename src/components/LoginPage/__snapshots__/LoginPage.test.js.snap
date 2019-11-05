@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginPage /> renders Login Page by default 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <LoginPage
+      history={
+        Object {
+          "push": [Function],
+        }
+      }
+      location={Object {}}
+    >
+      <LoginNav>
+        <nav
+          className="Nav"
+        >
+          <Link
+            to="/list"
+          >
+            <LinkAnchor
+              href="/list"
+              navigate={[Function]}
+            >
+              <a
+                href="/list"
+                onClick={[Function]}
+              >
+                Movies
+              </a>
+            </LinkAnchor>
+          </Link>
+           
+          <Link
+            to="/"
+          >
+            <LinkAnchor
+              href="/"
+              navigate={[Function]}
+            >
+              <a
+                href="/"
+                onClick={[Function]}
+              >
+                Register
+              </a>
+            </LinkAnchor>
+          </Link>
+          <div
+            className="Nav__not-logged-in"
+          >
+            <Link
+              to="/login"
+            >
+              <LinkAnchor
+                href="/login"
+                navigate={[Function]}
+              >
+                <a
+                  href="/login"
+                  onClick={[Function]}
+                >
+                  Log in
+                </a>
+              </LinkAnchor>
+            </Link>
+          </div>
+        </nav>
+      </LoginNav>
+      <section
+        className="LoginPage"
+      >
+        <div
+          className="success-alert"
+        />
+        <h1
+          className="welcome-header"
+        >
+          <img
+            alt="welcome"
+            className="welcome-header"
+            src="welcome.png"
+          />
+        </h1>
+        <p>
+          Please login below
+        </p>
+        <LoginForm
+          onLoginSuccess={[Function]}
+        >
+          <form
+            className="LoginForm"
+            onSubmit={[Function]}
+          >
+            <span
+              role="alert"
+            />
+            <section
+              className="user_name"
+            >
+              <label
+                htmlFor="LoginForm__user_name"
+              >
+                Username
+              </label>
+              <input
+                id="LoginForm__user_name"
+                name="user_name"
+              />
+            </section>
+            <section
+              className="password"
+            >
+              <label
+                htmlFor="LoginForm__password"
+              >
+                Password
+              </label>
+              <input
+                id="LoginForm__password"
+                name="password"
+                type="password"
+              />
+            </section>
+            <button
+              type="submit"
+            >
+              Login
+            </button>
+          </form>
+        </LoginForm>
+      </section>
+    </LoginPage>
+  </Router>
+</BrowserRouter>
+`;

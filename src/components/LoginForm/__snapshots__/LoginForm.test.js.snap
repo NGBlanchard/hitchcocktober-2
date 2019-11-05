@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginForm /> renders Login Form by default 1`] = `
+<LoginForm
+  onLoginSuccess={[Function]}
+>
+  <form
+    className="LoginForm"
+    onSubmit={[Function]}
+  >
+    <span
+      role="alert"
+    />
+    <section
+      className="user_name"
+    >
+      <label
+        htmlFor="LoginForm__user_name"
+      >
+        Username
+      </label>
+      <input
+        id="LoginForm__user_name"
+        name="user_name"
+      />
+    </section>
+    <section
+      className="password"
+    >
+      <label
+        htmlFor="LoginForm__password"
+      >
+        Password
+      </label>
+      <input
+        id="LoginForm__password"
+        name="password"
+        type="password"
+      />
+    </section>
+    <button
+      type="submit"
+    >
+      Login
+    </button>
+  </form>
+</LoginForm>
+`;
