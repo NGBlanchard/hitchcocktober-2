@@ -47,10 +47,10 @@ class App extends React.Component {
               <Route
                 restrictied={true}
                 exact
-                path={"/"}
+                path={"/register"}
                 component={RegistrationPage}
               />
-              <PrivateRoute exact path={"/calendar"} component={Calendar} />
+              <PrivateRoute exact path={"/"} component={Calendar} />
               <PrivateRoute exact path={"/list"} component={List} />
               <Route component={NotFoundPage} />
             </Switch>

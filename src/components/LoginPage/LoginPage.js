@@ -44,7 +44,7 @@ export default class LoginPage extends Component {
 
   onLoginSuccess = id => {
     const { location, history } = this.props;
-    const destination = (location.state || {}).from || "/calendar";
+    const destination = (location.state || {}).from || "/";
     this.getUserBigObject(id).then(([movies, userData]) => {
       history.push(destination);
     });
@@ -59,7 +59,9 @@ export default class LoginPage extends Component {
           <h1 className="welcome-header">
             <img src={welcome} alt="welcome" className="welcome-header" />
           </h1>
-          <p>Please login below</p>
+          <h3 className="please-login">Please login below</h3>
+          <p className="demo">Demo Username: Demonstration <br/>
+            Demo Password: DemoPassword1!</p>
           <LoginForm onLoginSuccess={this.onLoginSuccess} />
         </section>
       </>

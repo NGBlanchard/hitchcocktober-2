@@ -2,7 +2,6 @@ import React from 'react'
 import Context from '../../Context'
 import moment from 'moment';
 
-
 import './Day.css'
 
 export default class Day extends React.Component {
@@ -11,7 +10,6 @@ export default class Day extends React.Component {
   }
   
   static contextType = Context
-
 
 
   currentDay = () => { return this.state.dateContext.format("D") }

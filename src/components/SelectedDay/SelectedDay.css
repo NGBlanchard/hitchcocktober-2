@@ -73,6 +73,15 @@
   margin-bottom: 50px;
 }
 
+.delete-movie {
+  background-color: rgba(240, 240, 240, 0.795);
+  font-family: 'Righteous', cursive;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 @media (min-width: 750px) {
   .not-added {
     margin-bottom: 0px;

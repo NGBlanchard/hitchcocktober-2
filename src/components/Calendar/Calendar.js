@@ -6,14 +6,15 @@ import Nav from "../Nav/Nav";
 import Day from "../Day/Day";
 import "./Calendar.css";
 import hitchcocktober from "../../images/hitchcocktober-head-gray.png";
+import ApiService from "../../services/api-service";
 
 export default class Calendar extends React.Component {
   state = {
     dayData: {},
-    showResults: false,
     poster: "",
     selectedDay: moment().format("D"),
-    user: null
+    user: null,
+    deleted: false,
   };
 
   static contextType = Context;
@@ -51,11 +52,31 @@ export default class Calendar extends React.Component {
       : this.setState({
           poster: ""
         });
-    this.setState({ showResults: true });
+    this.setState({
+      deleted: false
+    })
+  };
+
+  deleteMovie = () => {
+    const patch = {
+      movie_id: null,
+      movie: "",
+      rating: null,
+      poster_path: "",
+      user_id: null,
+    };
+    const finPatch = {};
+    finPatch[`oct${this.state.selectedDay}`] = patch;
+    const day = [`oct${this.state.selectedDay}`];
+    ApiService.patchDay(finPatch);
+    this.context.updateBigObj(finPatch, day);
+    this.setState({
+      deleted: true
+    })
   };
 
   renderDays() {
-    const { octDays = [] } = this.context;
+    const octDays = Object.keys(this.context.octDays2);
     let notOct = [];
     for (let i = 0; i < this.firstDayOfMonth(); i++) {
       notOct.push(
@@ -65,6 +86,7 @@ export default class Calendar extends React.Component {
       );
     }
     var totalCells = [...notOct, ...octDays];
+    
     return totalCells.map((day, index) => (
       <Day
         key={index}
@@ -113,15 +135,16 @@ export default class Calendar extends React.Component {
             )}
           </section>
         </div>
+        {this.state.deleted === false ? 
         <div className="selected-day-container">
-          {this.state.showResults ? (
             <SelectedDay
               poster={this.state.poster}
               day={this.state.selectedDay}
               dayData={this.state.dayData}
+              delete={this.deleteMovie}
             />
-          ) : null}
         </div>
+        : <div className="deleted-container"><p className="deleted">Deleted!</p></div>}
         </div>
       </>
     );

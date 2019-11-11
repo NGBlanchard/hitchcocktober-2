@@ -28,29 +28,26 @@
   max-width: 400px;
 }
 
-
 .editor-year {
   width: 100px;
 }
 
 .week {
-  padding-left: 13px;
-  padding-right: 20px;
   max-width: 375px;
-  display: none;
   display: flex;
   flex-direction: row;
 }
 
 .week-day {
-  font-size: 15px;
-  margin: 10px;
+  font-size: 18px;
+  margin-right: 8px;
+  margin-left: 4px;
   max-width: 65px;
   margin-bottom: 0px;
 }
 
 .hitchcocktober {
-  font-family: 'Nosifer', cursive;
+  font-family: "Nosifer", cursive;
 }
 
 .calendar-head {
@@ -61,7 +58,28 @@
   color: rgb(69, 69, 69);
 }
 
+.deleted {
+  font-size: 40px;
+  color: rgb(69, 69, 69);
+  font-family: "Righteous", cursive;
+}
 
+.deleted-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 500px) {
+  .week-day {
+    font-size: 18px;
+    margin-right: 20px;
+    max-width: 65px;
+    margin-bottom: 0px;
+  }
+}
 
 @media (min-width: 750px) {
   .page-container {
@@ -69,6 +87,18 @@
     flex-direction: row;
     align-items: baseline;
     justify-content: center;
+  }
+
+  .week-day {
+    font-size: 19px;
+    margin-right: 18px;
+    max-width: 65px;
+    margin-bottom: 0px;
+  }
+
+  .week {
+    position: relative;
+    left: 0px;
   }
 }
 

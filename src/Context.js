@@ -1,6 +1,40 @@
 import React from "react";
 
 const Context = React.createContext({
+  octDays2: {
+    "1": true,
+    "2": false,
+    "3": false,
+    "4": false,
+    "5": false,
+    "6": false,
+    "7": false,
+    "8": false,
+    "9": false,
+    "10": false,
+    "11": false,
+    "12": false,
+    "13": false,
+    "14": false,
+    "15": false,
+    "16": false,
+    "17": false,
+    "18": false,
+    "19": false,
+    "20": false,
+    "21": false,
+    "22": false,
+    "23": false,
+    "24": false,
+    "25": false,
+    "26": false,
+    "27": false,
+    "28": false,
+    "29": false,
+    "30": false,
+    "31": false
+  },
+
   octDays: [
     "1",
     "2",
@@ -43,13 +77,49 @@ const Context = React.createContext({
   setCurrentDay: () => {},
   setList: () => {},
   setBigObj: () => {},
-  updateBigObj: () => {}
+  updateBigObj: () => {},
+  setDay: () => {},
+  deleteMovie: () => {},
 });
 
 export default Context;
 
 export class ContextProvider extends React.Component {
   state = {
+    octDays2: {
+      "1": true,
+      "2": false,
+      "3": false,
+      "4": false,
+      "5": false,
+      "6": false,
+      "7": false,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false,
+      "15": false,
+      "16": false,
+      "17": false,
+      "18": false,
+      "19": false,
+      "20": false,
+      "21": false,
+      "22": false,
+      "23": false,
+      "24": false,
+      "25": false,
+      "26": false,
+      "27": false,
+      "28": false,
+      "29": false,
+      "30": false,
+      "31": false
+    },
+
     octDays: [
       "1",
       "2",
@@ -89,6 +159,18 @@ export class ContextProvider extends React.Component {
     error: null
   };
 
+  deleteMovie = (patch, movieDay) => {
+    const bigObj = Object.assign({}, this.state.bigObj);
+    bigObj[movieDay] = patch;
+    this.setState({ bigObj }, () => null);
+  }
+ 
+  // setDay = num => {
+  //   const octDays2 = Object.assign({}, this.state.octDays2);
+  //   octDays2[num] = !octDays2[num];
+  //   this.setState({ octDays2 }, () => null);
+  // };
+
   updateBigObj = (patch, movieDay, day) => {
     const bigObj = Object.assign({}, this.state.bigObj);
     bigObj[movieDay] = day;
@@ -96,15 +178,21 @@ export class ContextProvider extends React.Component {
   };
 
   setBigObj = data => {
-    this.setState({
-      bigObj: data
-    }, () => null);
+    this.setState(
+      {
+        bigObj: data
+      },
+      () => null
+    );
   };
 
   setList = res => {
-    this.setState({
-      list: res
-    }, () => null);
+    this.setState(
+      {
+        list: res
+      },
+      () => null
+    );
   };
 
   setCurrentDay = day => {
@@ -133,7 +221,10 @@ export class ContextProvider extends React.Component {
       setList: this.setList,
       bigObj: this.state.bigObj,
       setBigObj: this.setBigObj,
-      updateBigObj: this.updateBigObj
+      updateBigObj: this.updateBigObj,
+      octDays2: this.state.octDays2,
+      setDay: this.setDay,
+      deleteMovie: this.deleteMovie
     };
 
     return (

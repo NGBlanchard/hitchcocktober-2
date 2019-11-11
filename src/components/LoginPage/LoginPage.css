@@ -62,3 +62,12 @@ input:focus {
   margin-bottom: 50px;
   width: 350px;
 }
+
+.please-login{
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.demo {
+  margin: 10px;
+}

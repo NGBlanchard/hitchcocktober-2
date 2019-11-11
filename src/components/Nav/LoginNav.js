@@ -1,53 +1,41 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom'
-import TokenService from '../../services/token-service.js'
-import './Nav.css'
-
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
+import TokenService from "../../services/token-service.js";
+import "./Nav.css";
 
 export default class LoginNav extends React.Component {
   handleLogoutClick = () => {
-    TokenService.clearAuthToken()
+    TokenService.clearAuthToken();
     sessionStorage.clear();
-    window.location.href = '/login';
-  }
+    window.location.href = "/login";
+  };
 
   renderLogoutLink() {
     return (
-      <div className='Nav__logged-in'>
-        <NavLink
-          onClick={this.handleLogoutClick}
-          to='/'>
+      <div className="Nav__logged-in">
+        <NavLink onClick={this.handleLogoutClick} to="/">
           Logout
         </NavLink>
       </div>
-    )
+    );
   }
 
   renderLoginLink() {
     return (
-      <div className='Nav__not-logged-in'>
-        <Link
-          to='/login'>
-          Log in
-        </Link>
+      <div className="Nav__not-logged-in">
+        <Link to="/login">Log in</Link>
       </div>
-    )
+    );
   }
 
   render() {
     return (
-      <nav className='Nav'> 
-      <Link to='/list'>
-          Movies
-      </Link> 
-        {' '}
-      <Link to='/'>
-          Register
-        </Link>
+      <nav className="Nav">
+        <Link to="/register">Register</Link>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
       </nav>
-    )
+    );
   }
 }

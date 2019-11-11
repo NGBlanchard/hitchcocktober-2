@@ -22,18 +22,19 @@ export default class SelectedDay extends React.Component {
               : ``}
           </h4>
           <section className="tonight-movie-card">
-          {this.props.poster
-                    ?
-            <NavLink to={`/list`} className="add-move">
-              <img
-                className="selected-movie-image"
-                src={
-                   `https://image.tmdb.org/t/p/w200${this.props.poster}`}
-                alt="movie poster"
-              />
-            </NavLink>
-            :
-            <NavLink to={`/list`} className="not-added">Click here to browse Alfred Hitchcock's movies.</NavLink>}
+            {this.props.poster ? (
+              <NavLink to={`/list`} className="add-move">
+                <img
+                  className="selected-movie-image"
+                  src={`https://image.tmdb.org/t/p/w200${this.props.poster}`}
+                  alt="movie poster"
+                />
+              </NavLink>
+            ) : (
+              <NavLink to={`/list`} className="not-added">
+                Click here to browse Alfred Hitchcock's movies.
+              </NavLink>
+            )}
             {this.props.poster ? (
               <span>
                 <p className="overview">{this.props.dayData.overview}</p>
@@ -48,6 +49,17 @@ export default class SelectedDay extends React.Component {
               <p></p>
             )}
             {this.props.poster ? <span></span> : <p></p>}
+            {this.props.poster ? (
+              <button
+                onClick={this.props.delete}
+                className="delete-movie"
+                style={{ backgroundColor: this.state.bgColor }}
+              >
+                Delete Movie From This Day
+              </button>
+            ) : (
+              <p></p>
+            )}
           </section>
         </section>
       </>
