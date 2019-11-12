@@ -165,11 +165,6 @@ export class ContextProvider extends React.Component {
     this.setState({ bigObj }, () => null);
   }
  
-  // setDay = num => {
-  //   const octDays2 = Object.assign({}, this.state.octDays2);
-  //   octDays2[num] = !octDays2[num];
-  //   this.setState({ octDays2 }, () => null);
-  // };
 
   updateBigObj = (patch, movieDay, day) => {
     const bigObj = Object.assign({}, this.state.bigObj);
