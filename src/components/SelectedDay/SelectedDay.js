@@ -14,7 +14,7 @@ export default class SelectedDay extends React.Component {
   render() {
     return (
       <>
-        <h2 className="date-banner">October {this.props.day}</h2>
+        <h2 className="date-banner">October {this.state.selectedDay}</h2>
         <section className="dinner-and-movie">
           <h4 className="movie-details">
             {this.props.poster
@@ -26,7 +26,7 @@ export default class SelectedDay extends React.Component {
               <NavLink to={`/list`} className="add-move">
                 <img
                   className="selected-movie-image"
-                  src={`https://image.tmdb.org/t/p/w200${this.props.poster}`}
+                  src={this.props.poster}
                   alt="movie poster"
                 />
               </NavLink>

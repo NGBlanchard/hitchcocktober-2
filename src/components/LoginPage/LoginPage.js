@@ -59,7 +59,6 @@ export default class LoginPage extends Component {
           <h1 className="welcome-header">
             <img src={welcome} alt="welcome" className="welcome-header" />
           </h1>
-          <h3 className="please-login">Please login below</h3>
           <p className="demo">Demo Username: Demonstration <br/>
             Demo Password: DemoPassword1!</p>
           <LoginForm onLoginSuccess={this.onLoginSuccess} />

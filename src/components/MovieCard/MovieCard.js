@@ -71,7 +71,7 @@ export default class MovieCard extends React.Component {
             <img
               src={
                 this.props.movie.poster_path !== null
-                  ? `https://image.tmdb.org/t/p/w200${this.props.movie.poster_path}`
+                  ? this.props.movie.poster_path
                   : "https://dummyimage.com/200x300/000/fff.png&text=No+Poster"
               }
               alt="movie poster"
