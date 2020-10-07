@@ -2,10 +2,13 @@ import React, { Component } from "react";
 import ApiService from "../../services/api-service";
 import TokenService from "../../services/token-service";
 import Context from "../../Context";
-
+import Loader from "react-loader-spinner";
 import './LoginForm.css'
 
 export default class LoginForm extends Component {
+  state = {
+    loading: false
+  }
   static defaultProps = {
     onLoginSuccess: (id) => {}
   };
@@ -15,6 +18,7 @@ export default class LoginForm extends Component {
 
   handleAuth = e => {
     e.preventDefault();
+    this.setState({ loading: true})
     this.setState({ error: null });
     const { user_name, password } = e.target;
     ApiService.postLogin({
@@ -37,7 +41,9 @@ export default class LoginForm extends Component {
 
   render() {
     const { error } = this.state;
+    if (!this.state.loading) {
     return (
+    
       <React.Fragment>
         <form className="LoginForm" onSubmit={this.handleAuth}>
           <span role="alert">{error && <p className="red">{error}</p>}</span>
@@ -57,5 +63,7 @@ export default class LoginForm extends Component {
         </form>
       </React.Fragment>
     );
-  }
+    } return (
+    <Loader type="ThreeDots" color="#212121"/>
+    )}
 }

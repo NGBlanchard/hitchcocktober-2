@@ -14,3 +14,8 @@
   padding: 3px 3px 5px 3px;
   background-blend-mode: screen;
 }
+
+.directions {
+  font-size: 14px;
+  line-height: 15px;
+}
