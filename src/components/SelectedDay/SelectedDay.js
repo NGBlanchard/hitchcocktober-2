@@ -14,7 +14,6 @@ export default class SelectedDay extends React.Component {
   render() {
     return (
       <>
-        <h2 className="date-banner">October {this.state.selectedDay}</h2>
         <section className="dinner-and-movie">
           <h4 className="movie-details">
             {this.props.poster

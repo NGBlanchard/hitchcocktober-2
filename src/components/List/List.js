@@ -10,10 +10,22 @@ import "./List.css";
 export default class List extends React.Component {
   static contextType = Context;
 
+  shuffleList = (movies) => {
+    if (movies === null) {return}
+    let i = movies.length - 1;
+    for (; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = movies[i];
+      movies[i] = movies[j];
+      movies[j] = temp;
+    }
+    return movies;
+  }
   renderlist() {
+    const shuffledMovies = this.shuffleList(this.context.list)
     const stringId = TokenService.getUserId();
     const userId = parseInt(stringId, 10);
-    return this.context.list.map(movie => (
+    return shuffledMovies.map(movie => (
       <MovieCard
         key={movie.id}
         title={movie.original_title}

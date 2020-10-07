@@ -5,7 +5,6 @@ import Nav from "../Nav/Nav";
 import "./Home.css";
 import hitchcocktober from "../../images/hitchcocktober-head-gray.png";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 import ApiService from "../../services/api-service";
 
 export default class Home extends React.Component {
@@ -93,8 +92,8 @@ export default class Home extends React.Component {
       user_id: null,
     };
     const finPatch = {};
-    finPatch[`oct${this.state.selectedDay}`] = patch;
-    const day = [`oct${this.state.selectedDay}`];
+    finPatch[`oct${this.state.selectedDay.getDate()}`] = patch;
+    const day = [`oct${this.state.selectedDay.getDate()}`];
     ApiService.patchDay(finPatch);
     this.context.updateBigObj(finPatch, day);
     this.setState({
@@ -103,10 +102,8 @@ export default class Home extends React.Component {
   };
 
   render() {
-    const { error } = this.context;
-    console.log(this.state.selectedDay.getDate());
-
     return (
+      <>
       <section className="home-cont">
         <Nav />
 
@@ -125,6 +122,7 @@ export default class Home extends React.Component {
 
         {this.state.deleted === false ? (
           <div className="selected-day-container">
+            <h2 className="date-banner">{this.state.selectedDay.toLocaleDateString()}</h2>
             <SelectedDay
               poster={this.state.poster}
               day={this.state.selectedDay}
@@ -138,6 +136,7 @@ export default class Home extends React.Component {
           </div>
         )}
       </section>
+      </>
     );
   }
 }
